@@ -1,7 +1,8 @@
+#pedir al usuario que ingrese un numero del 0-100 y ver si aprobo o reprobo 
 try:
         calificacion = float(input("Ingresa una calificación numérica (0-100): "))
         if 0 <= calificacion <= 100:
-            if calificacion >= 60:
+            if calificacion >= 70:
                 print("El estudiante ha aprobado.")
             else:
                 print("El estudiante ha reprobado.")
@@ -11,6 +12,7 @@ except ValueError:
         print("Entrada inválida. Por favor, ingresa un número.")
 
 
+#ingresa una lista de calificaciones para tu promedio
 try:
     calificaciones = input("Ingresa una lista de calificaciones separadas por comas: ")
     lista_calificaciones = [float(x) for x in calificaciones.split(',')]
@@ -21,20 +23,22 @@ except ValueError:
 
 
 
+#ingresa una de las calificaciones para comparar
 try:
     valor = float(input("Ingresa un valor para comparar: "))
     contador = 0
     for calificacion in lista_calificaciones:
         if calificacion > valor:
             contador += 1
-        print(f"Hay {contador} calificaciones mayores que {valor}.")
-except ValueError:
+    print(f"Hay {contador} calificaciones mayores que {valor}.")
+except ValueError: 
         print("Entrada inválida. Por favor, ingresa un número.")
 
 
 
+#ingresa una calificacion pára ver si esta en la lista
 try:
-        valor_especifico = float(input("Ingresa una calificación específica para contar: "))
+        valor_especifico = float(input("Ingresa una calificación específica para encontrar: "))
         contador = 0
         for calificacion in lista_calificaciones:
             if calificacion == valor_especifico:
