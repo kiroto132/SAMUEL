@@ -72,6 +72,6 @@ def menu():
             break
         else:
             print("opcion invalida intanta de nuevo")
-if __name__ == "__main__":
-    contrasena()
-    menu()
+
+contrasena()
+menu()
