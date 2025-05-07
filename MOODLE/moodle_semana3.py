@@ -7,6 +7,8 @@
 # 6. Mostrar todos los productos en el inventario.
 # 7. Salir del programa.
 
+# contraseña: 1234
+
 inve = {}
 valor = 0
 cantidad = 0
@@ -74,7 +76,7 @@ def calcular_valort():
 def contrasena(no):
     contrasena = "1234"
     while True:
-        password = input("ingresa la contrasena:\n")
+        password = int(input("ingresa la contrasena:\n"))
         if password == contrasena:
             print(f"contrasena correcta")
             print(f"bienvenido al sistema de inventario {no}")
@@ -120,5 +122,5 @@ def menu():
         else:
             print("opcion no valida, por favor elige una opcion valida")
 
-contrasena(input("nombre del administrador:\n"))
+contrasena(str(input("nombre del administrador:\n")))
 menu()
