@@ -1,3 +1,5 @@
+# en este codigo lo que utilizamos fue crear una agenda de contactos en un diccionario dentro de una lista 
+
 contactos = [{
 
 }]
