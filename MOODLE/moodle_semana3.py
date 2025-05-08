@@ -74,11 +74,11 @@ def calcular_valort():
 
 # Definimos una función para verificar la contraseña(opcional)
 def contrasena(no):
-    contrasena = "1234"
+    contrasena = 1234
     while True:
         password = int(input("ingresa la contrasena:\n"))
         if password == contrasena:
-            print(f"contrasena correcta")
+            print("contrasena correcta")
             print(f"bienvenido al sistema de inventario {no}")
             print("por favor elige una opcion del menu")
             break
