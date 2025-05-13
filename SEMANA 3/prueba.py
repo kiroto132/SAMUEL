@@ -1,87 +1,102 @@
-inventory = [
-    {"title": "el diablo y la señorita pym", "price": 10.0, "quantity": 100},
-    {"title": "satanas", "price": 15.0, "quantity": 50},
-    {"title": "las ventajas de ser invisible", "price": 20.0, "quantity": 30},
-    {"title": "it", "price": 25.0, "quantity": 10},
-    {"title": "cien años de soledad", "price": 30.0, "quantity": 5}
-]
+#You were hired to create a system that organizes the products in an inventory and makes it optimal for the administrator,
+#easy to use, and fast in searching for products.
+inventory = [{'product': 'rice', 'price' : 5000, 'quantity' : 100},
+            {'product': 'rhicken', 'price' : 16000,  'quantity': 90},
+            {'product' : 'rugar', 'price': 4500, 'quantity': 70},
+            {'product': 'ratmeal', 'price' : 3500, 'quantity': 50}
+            ]
 
+#Here you add the product, price and quantity to display in the inventory.
+def add_products(name, price, quantity):
+    inventory.append({'product': name, 'price' : price, 'quantity' : quantity})
+    print(f"The {name} products with price: {price:.2f} and the quantity: {quantity} was successfully added! ")
 
-def added_book(title, price, quantity):
-        inventory.append({"title": title, "price":price, "quantity":quantity} )
-        print("the book was added effectively")
+#This is optional, here you see the entire inventory to verify if the new product was successfully added.
+def meet_product():
+    for i in inventory:
+        print(i)
+    if not i:
+        print("There are no products")
 
-#
-def search_book(title):
-    for inve in inventory:
-        if inve["title"] == title:
-            print(f"the book is {title} and preci is {inve['price']} and quantity is {inve['quantity']}")
-            return inve
-    print(f"the book {title} not exists")
-    return None
-def meet_the_books():
+#Search for a specific product to see if it is in stock, see its price and quantity.
+def search_products(name):
     for inv in inventory:
-        print(inv)
-    if not inv:
-        print("not the books")
-        return
-def update_inventory(title,price_n):
-    for inve in inventory:
-        if inve["title"] == title:
-            inve["price"] = price_n
-            return 
-    print(f"the book {title} not exists")
+        if inv['product'] == name:
+            print(f"The product is {name} and price is {inv['price']:.2f} and quantity is {inv['quantity']}")
+            return inv
+    print(f"The product {name} not exist, please re-enter an existing product.")
     return None
-def remove_books(title):
-    for chesk in inventory:
-        if chesk["title"] == title:
-            inventory.remove(chesk)
-            print(f"the book remove {title}")
+
+#Price update in case any product increases or decreases in price
+def update_the_product(name, price_new):
+    for to in inventory:
+        if to['product'] == name:
+            to['price'] = price_new
+            print(f"The {name} with the new price is ${price_new:.2f}")
+            print(inventory)
             return
-    print("not exists the book")
-def calculate_value():
-    worth = 0
-    for tory in inventory:
-        sumu = tory['price'] * tory['quantity']
-        worth = sumu + worth
-    print(f"the worth totality is ${worth:.2f}")
-    return
+    print(f"The product {name} not exist")
+    return None
+
+#delete a product you no longer want to sell
+def remove_a_product(name):
+    for ry in inventory:
+        if ry['product'] == name:
+            inventory.remove(ry)
+            print(f"The product remove {name}")
+            return
+    print("The product not exist.")
+
+#Calculate the price and quantity of all products and see the total profit price
+def calculate_the_products():
+    worth = 0 
+    for ve in inventory:
+        suma = ve['price'] * ve['quantity']
+        worth = suma + worth
+        print(f"The worth total is ${worth:.2f}")
+        return
+
+#Interactive menu to choose the function or section you want to see
 def menu():
     while True:
-        print("1. add new book. ")
-        print("2. research a book by his name. ")
-        print("3. show all the inventory. ")
-        print("4. Update the inventory. ")
-        print("5. Remove a book from the inventory. ")
-        print("6. Calculate total value of the inventory. ")
-        print("7. exit")
+        print("1. Add products")
+        print("2. Meet the products")
+        print("3. Search products")
+        print("4. Update products")
+        print("5. Remove products")
+        print("6. Calculate products")
+        print("7. get out of inventory")
 
-        opcion = int(input("Select an option:\n"))
-
-        match opcion:
-            case 1:
-                title = str(input("Enter the book into the inventory:\n"))
-                price = float(input("the price of the book:\n"))
-                quantity = int(input("what is the quantity:\n"))
-                added_book(title, price, quantity)
-            case 2:
-                title = str(input("what is the book like yours search:\n"))
-                search_book(title)
-            case 3:
-                meet_the_books()
-            case 4:
-                title = str(input("what is the book update?"))
-                price_n= float(input("price new?"))
-                update_inventory(title,price_n)
-            case 5:
-                title = str(input("what is the remove the book?"))
-                remove_books(title)
-            case 6:
-                calculate_value()
-            case 7:
-                print("closing")
-                break
-            case _:
-                print("incorrect")
-            
+        
+        try:
+            option = int(input("Select option:\n"))
+            match option:
+                case 1:
+                    name = str(input("What is the producto:\n")).lower()
+                    price = float(input("What is the price the products:\n"))
+                    quantity = int(input("Quantity?:\n"))
+                    add_products(name, price, quantity)
+                case 2:
+                    meet_product()
+                case 3:
+                    name = str(input("What is the product you want to search for?:\n")).lower()
+                    search_products(name)
+                case 4:
+                    print(inventory)
+                    name = str(input("What is the product?:\n")).lower()
+                    price_new = float(input("What is the new price?:\n"))
+                    update_the_product(name,price_new)
+                case 5:
+                    print(inventory)
+                    name = str(input("What is the prpoduct you want to remove?:·\n")).lower()
+                    remove_a_product(name)
+                case 6:
+                    calculate_the_products()
+                case 7:
+                    print("Closing.")
+                    break
+                case _:
+                    print("Incorrect.")          
+        except ValueError:
+            print("Invalid option, please select an option shown on the screen.")
 menu()
